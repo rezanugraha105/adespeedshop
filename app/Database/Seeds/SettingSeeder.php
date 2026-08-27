@@ -11,8 +11,8 @@ class SettingSeeder extends Seeder
         $defaults = [
             'biaya_admin_shopee' => '6.5',
             'company_name'       => 'ADM Motor Parts & Accessories',
-            'company_address'    => 'Depok, Jawa Barat, Indonesia',
-            'company_phone'      => '0812-3456-7890',
+            'company_address'    => 'Jl. Kavling baru No.09, Grogol, Kec. Limo, Kota Depok, Jawa Barat 16514',
+            'company_phone'      => '0812-8049-2796',
         ];
 
         foreach ($defaults as $key => $value) {
