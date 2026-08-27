@@ -5,6 +5,8 @@
     <title>ADM Motor Parts &amp; Accessories — Baut Titanium Performa Tinggi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ADM Motor Parts & Accessories — baut titanium high performance untuk motor Anda. Pesan lewat WhatsApp atau Shopee.">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/img/favicon-32.png') ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/img/favicon-180.png') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
