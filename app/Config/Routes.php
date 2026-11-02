@@ -6,6 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Landing::index');
+$routes->get('/produk/detail/(:segment)', 'Landing::detail/$1');
+$routes->get('/foto/(:any)', 'Files::showFoto/$1');
 
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::attempt');

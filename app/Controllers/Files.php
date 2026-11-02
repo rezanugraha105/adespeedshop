@@ -44,4 +44,30 @@ class Files extends BaseController
             ->setHeader('Cache-Control', 'private, max-age=86400')
             ->setBody(file_get_contents($path));
     }
+
+    /**
+     * Stream file foto produk untuk katalog publik. Foto berada di
+     * writable/uploads/foto (di luar webroot) sehingga tetap tidak bisa
+     * diakses langsung lewat URL statis — hanya melalui route ini.
+     */
+    public function showFoto(string $filename)
+    {
+        $safeName = basename($filename);
+        $extension = strtolower(pathinfo($safeName, PATHINFO_EXTENSION));
+
+        if (! isset(self::MIME_MAP[$extension])) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        $path = WRITEPATH . 'uploads/foto/' . $safeName;
+
+        if (! is_file($path)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        return $this->response
+            ->setContentType(self::MIME_MAP[$extension])
+            ->setHeader('Cache-Control', 'public, max-age=604800')
+            ->setBody(file_get_contents($path));
+    }
 }

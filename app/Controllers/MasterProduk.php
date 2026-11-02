@@ -62,7 +62,10 @@ class MasterProduk extends BaseController
             return redirect()->to('/master-produk/new')->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        $this->model->insert($this->collectPost());
+        $data = $this->collectPost();
+        $data['foto'] = $this->handleFotoUpload();
+
+        $this->model->insert($data);
 
         return redirect()->to('/master-produk')->with('success', 'Produk berhasil ditambahkan.');
     }
@@ -92,7 +95,15 @@ class MasterProduk extends BaseController
             return redirect()->to("/master-produk/{$id}/edit")->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        $this->model->update($id, $this->collectPost());
+        $data = $this->collectPost();
+
+        $fotoBaru = $this->handleFotoUpload();
+        if ($fotoBaru !== null) {
+            $this->hapusFotoLama($produk);
+            $data['foto'] = $fotoBaru;
+        }
+
+        $this->model->update($id, $data);
 
         return redirect()->to('/master-produk')->with('success', 'Produk berhasil diperbarui.');
     }
@@ -105,6 +116,7 @@ class MasterProduk extends BaseController
         }
 
         $this->model->delete($id);
+        $this->hapusFotoLama($produk);
 
         return redirect()->to('/master-produk')->with('success', 'Produk berhasil dihapus.');
     }
@@ -119,7 +131,52 @@ class MasterProduk extends BaseController
             'harga_jual_shopee'  => $this->request->getPost('harga_jual_shopee'),
             'harga_jual_offline' => $this->request->getPost('harga_jual_offline'),
             'stok_awal'          => $this->request->getPost('stok_awal'),
+            'deskripsi'          => $this->request->getPost('deskripsi'),
+            'diskon_percent'     => $this->request->getPost('diskon_percent') ?: 0,
+            'is_unggulan'        => $this->request->getPost('is_unggulan') ? 1 : 0,
+            'is_tampil'          => $this->request->getPost('is_tampil') ? 1 : 0,
         ];
+    }
+
+    /**
+     * Proses upload foto produk. Return nama file jika sukses, null jika
+     * tidak ada file yang diunggah.
+     */
+    private function handleFotoUpload(): ?string
+    {
+        $file = $this->request->getFile('foto_file');
+        if ($file === null || ! $file->isValid()) {
+            return null;
+        }
+
+        if (! in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/webp'], true)) {
+            session()->set('foto_error', 'Format foto harus JPG, PNG, atau WebP.');
+            return null;
+        }
+
+        $nama = $file->getRandomName();
+        $dir  = WRITEPATH . 'uploads/foto';
+
+        if (! is_dir($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        $file->move($dir, $nama);
+
+        return $nama;
+    }
+
+    /**
+     * Hapus file foto lama (jika ada) dari writable/uploads/foto.
+     */
+    private function hapusFotoLama(array $produk): void
+    {
+        if (! empty($produk['foto'])) {
+            $path = WRITEPATH . 'uploads/foto/' . basename($produk['foto']);
+            if (is_file($path)) {
+                unlink($path);
+            }
+        }
     }
 
     private function validateProduk($id = null): bool

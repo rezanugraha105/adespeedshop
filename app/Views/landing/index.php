@@ -218,7 +218,70 @@
         .produk-card .produk-kode { font-size: .7rem; color: #9aa0ab; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
         .produk-card .produk-nama { font-weight: 700; font-size: .96rem; min-height: 2.6em; margin: .25rem 0 .5rem; }
         .produk-card .produk-harga { font-weight: 800; color: var(--brand-red); font-size: 1.15rem; font-family: 'Sora', sans-serif; }
+        .produk-card .produk-harga s { color: #9aa0ab; font-size: .8rem; font-weight: 500; }
         .produk-card .btn-sm { border-radius: 9px; }
+        .produk-card .produk-stok { font-size: .74rem; color: #6b7280; margin-bottom: .7rem; }
+        .produk-card .produk-stok.low { color: var(--brand-red); font-weight: 600; }
+        .produk-card .produk-desc { font-size: .8rem; color: #6b7280; margin: 0 0 .6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .produk-thumb.has-img i { display: none; }
+        .produk-thumb img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; transition: transform .5s var(--ease); }
+        .produk-card:hover .produk-thumb img { transform: scale(1.06); }
+        .badge-diskon {
+            position: absolute; top: 10px; right: 10px; z-index: 3;
+            background: var(--brand-red); color: #fff; font-size: .65rem; font-weight: 700;
+            padding: .25rem .55rem; border-radius: 999px; letter-spacing: .03em;
+        }
+        .badge-unggulan {
+            position: absolute; bottom: 10px; right: 10px; z-index: 3;
+            background: rgba(255,255,255,.94); color: var(--brand-navy); font-size: .65rem; font-weight: 700;
+            padding: .25rem .55rem; border-radius: 999px;
+        }
+        .badge-unggulan i { color: var(--brand-red); margin-right: 2px; }
+
+        /* ================= Katalog toolbar ================= */
+        .katalog-toolbar {
+            background: #fff; border: 1px solid #eef0f4; border-radius: 14px; padding: 1rem;
+            box-shadow: 0 .3rem 1rem rgba(20,22,31,.05); margin-bottom: 2rem;
+        }
+        .katalog-search {
+            display: flex; align-items: center; gap: .6rem; background: #f5f6f8;
+            border-radius: 10px; padding: .5rem .9rem;
+        }
+        .katalog-search i { color: #9aa0ab; font-size: .85rem; }
+        .katalog-search input { border: none; background: transparent; outline: none; font-size: .9rem; width: 100%; font-family: inherit; }
+        .filter-chip {
+            border: 1px solid #e3e5ea; background: #fff; color: #4b5058; font-size: .8rem; font-weight: 600;
+            padding: .45rem .95rem; border-radius: 999px; cursor: pointer; transition: all .25s var(--ease);
+            user-select: none;
+        }
+        .filter-chip:hover { border-color: var(--brand-red); color: var(--brand-red); }
+        .filter-chip.active { background: var(--brand-red); border-color: var(--brand-red); color: #fff; }
+        .sort-select { border: 1px solid #e3e5ea; border-radius: 10px; padding: .45rem .8rem; font-size: .82rem; font-weight: 600; color: #4b5058; background: #fff; }
+        .katalog-count { font-size: .85rem; color: #6b7280; font-weight: 600; }
+        .katalog-count b { color: var(--brand-navy); }
+        .produk-card .produk-link { color: inherit; text-decoration: none; display: block; }
+        .produk-empty {
+            text-align: center; padding: 3rem 1rem; color: #6b7280; background: #f9fafb;
+            border: 2px dashed #e3e5ea; border-radius: 16px;
+        }
+        .produk-empty i { font-size: 2rem; color: #c5c9d2; margin-bottom: .8rem; display: block; }
+
+        /* ================= Detail produk ================= */
+        .detail-wrap { padding: 7rem 0 3rem; }
+        .detail-img {
+            background: #f5f6f8; border-radius: 20px; overflow: hidden; position: relative;
+            aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+        }
+        .detail-img img { width: 100%; height: 100%; object-fit: contain; }
+        .detail-img i { font-size: 5rem; color: #c5c9d2; }
+        .detail-price-box { background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 1.2rem 1.4rem; margin: 1.2rem 0; }
+        .detail-price-box .harga { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--brand-red-light); }
+        .detail-price-box .harga s { font-size: 1rem; color: rgba(255,255,255,.45); font-weight: 500; }
+        .detail-spec { background: #f9fafb; border-radius: 12px; padding: 1rem 1.2rem; }
+        .detail-spec div { display: flex; justify-content: space-between; padding: .35rem 0; font-size: .9rem; border-bottom: 1px dashed #e3e5ea; }
+        .detail-spec div:last-child { border-bottom: none; }
+        .detail-spec span:first-child { color: #6b7280; }
+        .detail-spec span:last-child { font-weight: 700; color: var(--brand-navy); }
 
         /* ================= Feature cards ================= */
         .feature-card {
@@ -279,7 +342,24 @@
             top: -80px; left: -60px; animation: float 7s ease-in-out infinite;
         }
 
-        /* ================= Footer ================= */
+        /* ================= Hero search ================= */
+        .hero-search {
+            max-width: 560px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
+            border-radius: 14px; padding: .35rem .4rem .35rem 1rem; display: flex; align-items: center; gap: .6rem;
+            backdrop-filter: blur(8px);
+        }
+        .hero-search i { color: rgba(255,255,255,.5); font-size: .9rem; }
+        .hero-search input {
+            flex: 1; background: transparent; border: none; outline: none; color: #fff;
+            font-size: .92rem; font-family: inherit; min-width: 0;
+        }
+        .hero-search input::placeholder { color: rgba(255,255,255,.4); }
+        .hero-search button {
+            background: var(--brand-red); color: #fff; border: none; border-radius: 10px;
+            padding: .55rem 1.1rem; font-weight: 700; font-size: .85rem; cursor: pointer;
+            transition: background .3s var(--ease);
+        }
+        .hero-search button:hover { background: var(--brand-red-dark); }
         .footer-adm { background: var(--brand-dark); color: rgba(255,255,255,.68); padding: 4rem 0 1.5rem; }
         .footer-adm h6 { color: #fff; font-weight: 700; margin-bottom: 1.1rem; font-family: 'Sora', sans-serif; }
         .footer-adm a { color: rgba(255,255,255,.65); text-decoration: none; transition: color .25s var(--ease), padding-left .25s var(--ease); }
@@ -337,7 +417,7 @@
         <div class="collapse navbar-collapse" id="navMain">
             <ul class="navbar-nav ms-auto mb-3 mb-lg-0 align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+                <li class="nav-item"><a class="nav-link" href="#produk">Katalog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kenapa">Kenapa Kami</a></li>
                 <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
@@ -361,13 +441,18 @@
                 <span class="hero-badge"><span class="dot"></span> Siap Melayani — High Performance Est. 2026</span>
                 <h1>Baut Titanium <span class="highlight">Presisi Tinggi</span> untuk Motor Kesayangan Anda</h1>
                 <p class="lead mt-3 mb-4">Ringan, kuat, dan tahan karat. ADM Motor Parts &amp; Accessories menyediakan baut titanium grade tinggi yang dirancang khusus untuk performa maksimal motor Anda.</p>
-                <div class="d-flex flex-wrap gap-3">
+                <div class="d-flex flex-wrap gap-3 mb-4">
                     <a href="<?= esc($waLink) ?>" target="_blank" class="btn btn-wa btn-lg px-4">
                         <i class="fa-brands fa-whatsapp me-2"></i> Chat WhatsApp
                     </a>
                     <a href="<?= esc($shopeeLink) ?>" target="_blank" class="btn btn-shopee btn-lg px-4">
                         <i class="fa-solid fa-bag-shopping me-2"></i> Beli di Shopee
                     </a>
+                </div>
+                <div class="hero-search" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="heroSearch" placeholder="Cari produk… mis. M5x20, button head, sok" autocomplete="off">
+                    <button type="button" onclick="scrollToKatalog()">Cari</button>
                 </div>
             </div>
             <div class="col-lg-5 position-relative" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
@@ -376,6 +461,13 @@
                         <img src="<?= base_url('assets/img/logo-adespeedshop.png') ?>" alt="ADM Motor Parts Logo">
                         <div class="floating-chip chip-1"><i class="fa-solid fa-shield-halved"></i> Garansi Kualitas</div>
                         <div class="floating-chip chip-2"><i class="fa-solid fa-bolt"></i> Titanium Grade 5</div>
+                    </div>
+                <?php else : ?>
+                    <div class="hero-logo-wrap">
+                        <div class="text-center">
+                            <i class="fa-solid fa-screwdriver-wrench" style="font-size:4rem;color:var(--brand-red);"></i>
+                            <p class="mt-3 mb-0 fw-bold">ADM Motor Parts</p>
+                        </div>
                     </div>
                 <?php endif ?>
             </div>
@@ -431,40 +523,108 @@
 
 <section class="py-5 mt-4" id="produk">
     <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <span class="section-label"><i class="fa-solid fa-star"></i> Produk Unggulan</span>
-            <h2 class="section-title">Pilihan Baut Titanium Terbaik</h2>
-            <p class="section-sub mt-2">Beberapa produk andalan kami — hubungi kami untuk katalog lengkap dan ukuran custom.</p>
+        <div class="text-center mb-4" data-aos="fade-up">
+            <span class="section-label"><i class="fa-solid fa-star"></i> Katalog Online</span>
+            <h2 class="section-title">Katalog Produk Kami</h2>
+            <p class="section-sub mt-2">Pilih ukuran dan head type yang sesuai kebutuhan motor Anda.</p>
         </div>
-        <?php if (empty($produk)) : ?>
-            <p class="text-center text-muted">Produk akan segera ditambahkan.</p>
-        <?php else : ?>
-            <div class="row g-4">
-                <?php foreach ($produk as $i => $p) : ?>
-                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="<?= ($i % 4) * 100 ?>">
-                        <div class="produk-card" data-tilt>
-                            <div class="produk-thumb">
-                                <span class="produk-badge">Tersedia</span>
-                                <i class="fa-solid fa-screwdriver-wrench"></i>
-                            </div>
-                            <div class="produk-body">
-                                <div class="produk-kode"><?= esc($p['kode_produk']) ?></div>
-                                <div class="produk-nama"><?= esc($p['nama_produk']) ?></div>
-                                <div class="produk-harga mb-2">Rp<?= number_format($p['harga_jual_offline'], 0, ',', '.') ?></div>
-                                <div class="d-grid gap-2">
-                                    <a href="<?= esc($waLinkFor($p['nama_produk'])) ?>" target="_blank" class="btn btn-wa btn-sm">
-                                        <i class="fa-brands fa-whatsapp me-1"></i> Pesan
-                                    </a>
-                                    <a href="<?= esc($shopeeLink) ?>" target="_blank" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fa-solid fa-bag-shopping me-1"></i> Shopee
-                                    </a>
+
+        <div class="katalog-toolbar d-flex flex-wrap align-items-center gap-2 mb-1" data-aos="fade-up">
+            <div class="flex-grow-1" style="min-width:200px;">
+                <div class="katalog-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="catalogSearch" placeholder="Cari kode / nama produk…" autocomplete="off">
+                </div>
+            </div>
+            <button class="filter-chip" data-filter="all">Semua</button>
+            <button class="filter-chip" data-filter="unggulan"><i class="fa-solid fa-crown me-1"></i>Unggulan</button>
+            <button class="filter-chip" data-filter="diskon"><i class="fa-solid fa-tag me-1"></i>Diskon</button>
+            <button class="filter-chip" data-filter="stok"><i class="fa-solid fa-box me-1"></i>Stok</button>
+            <select class="sort-select" id="catalogSort">
+                <option value="default">Urutan Default</option>
+                <option value="murah">Harga Terendah</option>
+                <option value="mahal">Harga Tertinggi</option>
+            </select>
+            <div class="katalog-count">Menampilkan <b id="catalogCount">0</b> produk</div>
+        </div>
+
+        <div id="catalogGrid">
+            <?php if (empty($produk)) : ?>
+                <div class="produk-empty">
+                    <i class="fa-solid fa-box"></i>
+                    Produk akan segera ditambahkan. Silakan hubungi kami via WhatsApp.
+                </div>
+            <?php else : ?>
+                <div class="row g-4" id="produkRow">
+                    <?php foreach ($produk as $i => $p) : ?>
+                        <?php
+                            $diskon = (float) ($p['diskon_percent'] ?? 0);
+                            $hargaOffline = (float) $p['harga_jual_offline'];
+                            $hargaCoret = $diskon > 0 ? $hargaOffline / (1 - $diskon / 100) : 0;
+                        ?>
+                        <div class="col-6 col-md-4 col-lg-3 katalog-item"
+                             data-aos="fade-up"
+                             data-aos-delay="<?= min($i % 4, 4) * 80 ?>"
+                             data-aos-offset="40"
+                             data-kode="<?= esc($p['kode_produk']) ?>"
+                             data-nama="<?= esc($p['nama_produk']) ?>"
+                             data-harga="<?= esc($hargaOffline) ?>"
+                             data-diskon="<?= esc($diskon) ?>"
+                             data-unggulan="<?= esc($p['is_unggulan'] ?? 0) ?>"
+                             data-stok="<?= esc($p['sisa_stok'] ?? 0) ?>">
+                            <div class="produk-card" data-tilt>
+                                <a href="<?= site_url('produk/detail/' . rawurlencode($p['kode_produk'])) ?>" class="produk-link">
+                                    <div class="produk-thumb <?= ! empty($p['foto']) ? 'has-img' : '' ?>">
+                                        <?php if (! empty($p['foto'])) : ?>
+                                            <img src="<?= site_url('foto/' . rawurlencode($p['foto'])) ?>" alt="<?= esc($p['nama_produk']) ?>" loading="lazy">
+                                        <?php else : ?>
+                                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                                        <?php endif ?>
+                                        <span class="produk-badge">
+                                            <?= ($p['sisa_stok'] ?? 0) > 0 ? 'Tersedia' : 'Stok Habis' ?>
+                                        </span>
+                                        <?php if ($diskon > 0) : ?>
+                                            <span class="badge-diskon">-<?= (int) $diskon ?>%</span>
+                                        <?php endif ?>
+                                        <?php if (! empty($p['is_unggulan'])) : ?>
+                                            <span class="badge-unggulan"><i class="fa-solid fa-crown"></i> Unggulan</span>
+                                        <?php endif ?>
+                                    </div>
+                                    <div class="produk-body">
+                                        <div class="produk-kode"><?= esc($p['kode_produk']) ?> · <?= esc($p['satuan'] ?? 'Pcs') ?></div>
+                                        <div class="produk-nama"><?= esc($p['nama_produk']) ?></div>
+                                        <?php if (! empty($p['deskripsi'])) : ?>
+                                            <div class="produk-desc"><?= esc($p['deskripsi']) ?></div>
+                                        <?php endif ?>
+                                        <div class="produk-harga">
+                                            <?php if ($hargaCoret > 0) : ?>
+                                                <s>Rp<?= number_format($hargaCoret, 0, ',', '.') ?></s>
+                                            <?php endif ?>
+                                            Rp<?= number_format($hargaOffline, 0, ',', '.') ?>
+                                        </div>
+                                        <div class="produk-stok <?= ($p['sisa_stok'] ?? 0) <= 5 ? 'low' : '' ?>">
+                                            <?= ($p['sisa_stok'] ?? 0) > 0
+                                                ? 'Sisa stok: ' . number_format($p['sisa_stok']) . ' · Terjual: ' . number_format($p['qty_terjual'] ?? 0)
+                                                : 'Stok habis' ?>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="produk-body pt-0">
+                                    <div class="d-grid gap-2">
+                                        <a href="<?= esc($waLinkFor($p['nama_produk'])) ?>" target="_blank" class="btn btn-wa btn-sm">
+                                            <i class="fa-brands fa-whatsapp me-1"></i> Pesan WhatsApp
+                                        </a>
+                                        <a href="<?= esc($shopeeLink) ?>" target="_blank" class="btn btn-outline-secondary btn-sm">
+                                            <i class="fa-solid fa-bag-shopping me-1"></i> Beli di Shopee
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach ?>
-            </div>
-        <?php endif ?>
+                    <?php endforeach ?>
+                </div>
+            <?php endif ?>
+        </div>
     </div>
 </section>
 
@@ -683,6 +843,88 @@
         navbar.classList.toggle('scrolled', scrolled);
         backTop.classList.toggle('show', window.scrollY > 500);
     });
+
+    /* ================= Katalog filter/sort/search ================= */
+    var catalogItems = Array.prototype.slice.call(document.querySelectorAll('.katalog-item'));
+    var catalogSearchInput = document.getElementById('catalogSearch');
+    var heroSearchInput = document.getElementById('heroSearch');
+    var catalogSort = document.getElementById('catalogSort');
+    var catalogCount = document.getElementById('catalogCount');
+    var filterChips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
+    var currentFilter = 'all';
+    var currentSort = 'default';
+
+    function applyCatalog() {
+        var q = (catalogSearchInput.value || '').toLowerCase();
+
+        var visible = catalogItems.filter(function (item) {
+            var nama = (item.dataset.nama || '').toLowerCase();
+            var kode = (item.dataset.kode || '').toLowerCase();
+            var matchSearch = q === '' || nama.indexOf(q) !== -1 || kode.indexOf(q) !== -1;
+            var matchFilter = true;
+            if (currentFilter === 'unggulan') matchFilter = item.dataset.unggulan === '1';
+            if (currentFilter === 'diskon') matchFilter = parseFloat(item.dataset.diskon || '0') > 0;
+            if (currentFilter === 'stok') matchFilter = parseInt(item.dataset.stok || '0', 10) > 0;
+            return matchSearch && matchFilter;
+        });
+
+        if (currentSort === 'murah' || currentSort === 'mahal') {
+            visible.sort(function (a, b) {
+                var ha = parseFloat(a.dataset.harga || '0');
+                var hb = parseFloat(b.dataset.harga || '0');
+                return currentSort === 'murah' ? ha - hb : hb - ha;
+            });
+        }
+
+        var row = document.getElementById('produkRow');
+        visible.forEach(function (item) { row.appendChild(item); });
+
+        catalogCount.textContent = visible.length;
+
+        if (row && catalogItems.length > 0 && visible.length === 0) {
+            row.style.display = 'none';
+            var empty = document.createElement('div');
+            empty.className = 'produk-empty';
+            empty.id = 'catalogEmpty';
+            empty.innerHTML = '<i class="fa-solid fa-filter-circle-xmark"></i>Tidak ada produk yang cocok dengan pencarian Anda.';
+            if (! document.getElementById('catalogEmpty')) row.parentNode.appendChild(empty);
+        } else {
+            row.style.display = '';
+            var old = document.getElementById('catalogEmpty');
+            if (old) old.remove();
+        }
+
+        if (window.AOS) AOS.refresh();
+    }
+
+    catalogSearchInput.addEventListener('input', applyCatalog);
+    if (heroSearchInput) {
+        heroSearchInput.addEventListener('input', function () {
+            catalogSearchInput.value = heroSearchInput.value;
+            applyCatalog();
+        });
+        heroSearchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') scrollToKatalog();
+        });
+    }
+    filterChips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            filterChips.forEach(function (c) { c.classList.remove('active'); });
+            chip.classList.add('active');
+            currentFilter = chip.dataset.filter;
+            applyCatalog();
+        });
+    });
+    filterChips[0].classList.add('active');
+    catalogSort.addEventListener('change', function () {
+        currentSort = catalogSort.value;
+        applyCatalog();
+    });
+
+    function scrollToKatalog() {
+        document.getElementById('produk').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function () { catalogSearchInput.focus(); }, 600);
+    }
 
     document.querySelectorAll('.stat-number[data-count]').forEach(function (el) {
         var target = parseInt(el.getAttribute('data-count'), 10);

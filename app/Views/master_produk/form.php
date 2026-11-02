@@ -40,6 +40,33 @@ $val = static fn ($field, $default = '') => old($field, $isEdit ? ($produk[$fiel
                     <label class="form-label">Stok Awal</label>
                     <input type="number" name="stok_awal" class="form-control" value="<?= esc($val('stok_awal', 0)) ?>" required>
                 </div>
+                <div class="col-md-3">
+                    <label class="form-label">Diskon (%)</label>
+                    <input type="number" step="0.01" min="0" max="99" name="diskon_percent" class="form-control" value="<?= esc($val('diskon_percent', 0)) ?>">
+                    <small class="text-muted">0 = tanpa diskon. Ditampilkan sebagai badge di katalog.</small>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Foto Produk</label>
+                    <input type="file" name="foto_file" accept="image/jpeg,image/png,image/webp" class="form-control">
+                    <small class="text-muted">JPG/PNG/WebP. Kosongkan jika tidak ingin mengganti.</small>
+                    <?php if ($isEdit && ! empty($produk['foto'])) : ?>
+                        <img src="<?= site_url('foto/' . rawurlencode($produk['foto'])) ?>" alt="foto" style="max-height:90px; margin-top:.4rem; border-radius:8px; object-fit:cover;">
+                    <?php endif ?>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control" rows="2" placeholder="Deskripsi singkat untuk katalog (opsional)"><?= esc($val('deskripsi')) ?></textarea>
+                </div>
+                <div class="col-md-4 d-flex align-items-end gap-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_unggulan" value="1" class="form-check-input" <?= old('is_unggulan', $isEdit ? ($produk['is_unggulan'] ?? 0) : 0) ? 'checked' : '' ?>>
+                        <label class="form-check-label">Produk Unggulan</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" name="is_tampil" value="1" class="form-check-input" <?= old('is_tampil', $isEdit ? ($produk['is_tampil'] ?? 1) : 1) ? 'checked' : '' ?>>
+                        <label class="form-check-label">Tampil di Katalog</label>
+                    </div>
+                </div>
             </div>
             <div class="mt-4">
                 <button type="submit" class="btn btn-primary">Simpan</button>
